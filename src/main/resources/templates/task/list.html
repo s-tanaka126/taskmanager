@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TaskManager</title>
+</head>
+<body>
+<h1>My Tasks</h1>
+<form method="post" th:action="@{/task/complete}" th:object="${taskRequest}">
+
+    <input name="taskName" type="text" th:value="*{taskName}"></input><input type="submit" value="送信">
+
+</form>
+</body>
+</html> 
