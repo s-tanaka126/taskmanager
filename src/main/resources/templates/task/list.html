@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>My Tasks</h1>
-<form method="post" th:action="@{/task/complete}" th:object="${taskRequest}">
+<form method="post" th:action="@{/task/regist}" th:object="${taskRequest}">
 
-    <input name="taskName" type="text" th:value="*{taskName}"></input><input type="submit" value="送信">
+    <input name="taskName" type="text" th:value="*{taskName}"></input><input type="submit" value="登録">
 
 </form>
 </body>

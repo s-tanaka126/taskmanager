@@ -18,17 +18,16 @@ public class TaskController {
 	  TaskService taskService;
 	  
 	@GetMapping	("/list")
-	public String taskForm(TaskRequest taskRequest) {
+	public String taskList(TaskRequest taskRequest) {
 
 		return "/task/list";
 
 	}
 
-	@PostMapping("/complete")
-	public String taskComplete(TaskRequest taskRequest) {
+	@PostMapping("/regist")
+	public String taskRegist(TaskRequest taskRequest) {
 		
 		  TaskEntity taskEntity = new TaskEntity();
-		  
 		  taskEntity.setTaskName(taskRequest.getTaskName());
 		  
 		  taskService.taskContentInsert(taskEntity);
