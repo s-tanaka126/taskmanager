@@ -60,6 +60,4 @@ public class TaskRequest {
 		this.taskName = taskName;
 	}
 
-
-
 }

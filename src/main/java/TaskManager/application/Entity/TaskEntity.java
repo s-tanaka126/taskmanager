@@ -1,5 +1,6 @@
 package TaskManager.application.Entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,5 +33,6 @@ public class TaskEntity {
 	@Column(name = "task_name")
 	private String taskName;
 	
+
 
 }
