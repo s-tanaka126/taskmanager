@@ -1,28 +1,55 @@
 package TaskManager.application.Request;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 import org.springframework.stereotype.Component;
-
-import com.sun.istack.NotNull;
 
 @Component
 public class TaskRequest {
-	
-	@Id
-	@Column(name = "task_id")
-	@NotNull
-	private int taskNo;
-	
-	private String taskName;
 
-	public int getTaskNo() {
-		return taskNo;
+	private int taskId;
+	private String taskName;
+	private String taskDate;
+	private String taskTime;
+	private String taskPlace;
+	private boolean completFlag;
+
+	public int getTaskId() {
+		return taskId;
 	}
 
-	public void setTaskNo(int taskNo) {
-		this.taskNo = taskNo;
+	public String getTaskDate() {
+		return taskDate;
+	}
+
+	public void setTaskDate(String taskDate) {
+		this.taskDate = taskDate;
+	}
+
+	public String getTaskTime() {
+		return taskTime;
+	}
+
+	public void setTaskTime(String taskTime) {
+		this.taskTime = taskTime;
+	}
+
+	public String getTaskPlace() {
+		return taskPlace;
+	}
+
+	public void setTaskPlace(String taskPlace) {
+		this.taskPlace = taskPlace;
+	}
+
+	public boolean isCompletFlag() {
+		return completFlag;
+	}
+
+	public void setCompletFlag(boolean completFlag) {
+		this.completFlag = completFlag;
+	}
+
+	public void setTaskID(int taskId) {
+		this.taskId = taskId;
 	}
 
 	public String getTaskName() {
@@ -32,7 +59,5 @@ public class TaskRequest {
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
 	}
-
-	
 
 }
