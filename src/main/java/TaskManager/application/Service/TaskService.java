@@ -19,7 +19,4 @@ public class TaskService {
 		
 		taskInsert.taskContentInsert(taskEntity);
 	}
-	
-	
-
 }

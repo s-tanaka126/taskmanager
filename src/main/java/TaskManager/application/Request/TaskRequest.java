@@ -5,15 +5,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskRequest {
 
-	private int taskNo;
+	private int taskId;
 	private String taskName;
 	private String taskDate;
 	private String taskTime;
 	private String taskPlace;
 	private boolean completFlag;
 
-	public int getTaskNo() {
-		return taskNo;
+	public int getTaskId() {
+		return taskId;
 	}
 
 	public String getTaskDate() {
@@ -48,8 +48,8 @@ public class TaskRequest {
 		this.completFlag = completFlag;
 	}
 
-	public void setTaskNo(int taskNo) {
-		this.taskNo = taskNo;
+	public void setTaskID(int taskId) {
+		this.taskId = taskId;
 	}
 
 	public String getTaskName() {
