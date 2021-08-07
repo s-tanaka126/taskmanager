@@ -1,8 +1,12 @@
 package TaskManager.application.Controller;
 
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,20 +25,22 @@ public class TaskController {
 
 	 
 	@GetMapping	("/list")
-	public String taskList(TaskRequest taskRequest) {
-
+	public String displayList(TaskRequest taskRequest,Model model) {
+		
+		  List<TaskEntity> taskList = taskService.getTaskList();
+		  model.addAttribute("taskList" , taskList);
+		 
 		return "/task/list";
 
 	}
 
 	@PostMapping("/regist")
-	public String taskRegist(TaskRequest taskRequest) {
+	public String registrTask(TaskRequest taskRequest) {
 		
-
-		  TaskEntity taskEntity = new TaskEntity();
-		  taskEntity.setTaskName(taskRequest.getTaskName());
+		  TaskEntity task = new TaskEntity();
+		  task.setTaskName(taskRequest.getTaskName());
 		  
-		  taskService.taskContentInsert(taskEntity);
+		  taskService.registTask(task);
 
 		return "redirect:/task/list";
 
