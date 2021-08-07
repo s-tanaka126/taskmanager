@@ -35,7 +35,7 @@ public class TaskController {
 	}
 
 	@PostMapping("/regist")
-	public String registrTask(TaskRequest taskRequest) {
+	public String registerTask(TaskRequest taskRequest) {
 		
 		  TaskEntity task = new TaskEntity();
 		  task.setTaskName(taskRequest.getTaskName());

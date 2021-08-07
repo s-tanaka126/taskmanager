@@ -2,32 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>タスク一覧</title>
+ <title>タスク一覧</title>
 </head>
-<body>
-<h1>タスク一覧</h1>
-<body>
-  <table>
-    <thead th:each="task : ${taskList}" th:object="${task}">
-      <th>
-        <tr>タスク名</tr><br>
-        <tr>日付</tr><br>
-        <tr>時間</tr><br>
-        <tr>場所</tr><br>
-      </th>
-    </thead>
-    <tbody>
-      <td th:text="*{taskName}"></td>
-      <td th:text="*{taskDate}"></td>
-      <td th:text="*{taskTime}"></td>
-      <td th:text="*{taskPlace}"></td>
-    </tbody>
-  </table>
+ <body>
+   <h1>タスク一覧</h1>
+    <table>
+       <thead th:each="task : ${taskList}" th:object="${task}">
+         <th>
+           <tr>タスク名</tr><br>
+           <tr>日付</tr><br>
+           <tr>時間</tr><br>
+           <tr>場所</tr><br>
+         </th>
+     </thead>
+     <tbody>
+       <td th:text="*{taskName}"></td>
+       <td th:text="*{taskDate}"></td>
+       <td th:text="*{taskTime}"></td>
+       <td th:text="*{taskPlace}"></td>
+     </tbody>
+    </table>
 
- <form method="post" th:action="@{/task/regist}" th:object="${taskRequest}">
+   <form method="post" th:action="@{/task/regist}" th:object="${taskRequest}">
 
-    <input name="taskName" type="text" th:value="*{taskName}"></input><input type="submit" value="登録">
+     <input name="taskName" type="text" th:value="*{taskName}"></input><input type="submit" value="登録">
 
-</form>
-</body>
+   </form>
+ </body>
 </html> 
