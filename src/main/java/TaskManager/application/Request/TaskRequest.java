@@ -48,12 +48,13 @@ public class TaskRequest {
 		this.completFlag = completFlag;
 	}
 
-	public void setTaskID(int taskId) {
-		this.taskId = taskId;
-	}
 
 	public String getTaskName() {
 		return taskName;
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
 	}
 
 	public void setTaskName(String taskName) {
