@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="UTF-8">
+  <title>タスク詳細</title>
+</head>
+ <body>
+  <div th:object="${taskdetail}">
+   <form method="post" th:action="@{/task/list}">
+    <table>
+     <tbody>
+      <tr>
+       <th>タスク名</th>
+        <td>
+         <input th:value="*{taskName}" />
+        </td>
+      </tr>
+      <tr>
+       <th>日付</th>
+        <td>
+         <input th:value="*{taskDate}" />
+        </td>
+      </tr>
+      <tr>
+       <th>時間</th>
+        <td>
+         <input th:value="*{taskTime}" />
+        </td>
+      </tr>   
+      <tr>
+       <th>日付</th>
+        <td>
+         <input th:value="*{taskDate}" />
+        </td>
+      </tr>     
+      <tr>
+       <th>場所</th>
+        <td>
+         <input th:value="*{taskPlace}" />
+        </td>
+      </tr> 
+      <tr>
+        <td>
+         <input type="submit" value="更新"/>
+        </td>
+      </tr>         
+     </tbody>
+    </table>
+   </form>
+  </div>
+ </body>
+</html>

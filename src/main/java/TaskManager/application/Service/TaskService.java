@@ -27,13 +27,15 @@ public class TaskService {
 		taskRepository.save(task);
 	}
 	
-	
 	  public List<TaskEntity> getTaskList(){
 	  
 	  return taskRepository.findAll(); 
 	  
 	  }
-	 
-	
+	  
+	    public TaskEntity findByTaskId(int taskId) {
 
+	        //return taskDao.findByTaskId(taskId);
+	        return taskRepository.findByTaskId(taskId);
+	    }
 }

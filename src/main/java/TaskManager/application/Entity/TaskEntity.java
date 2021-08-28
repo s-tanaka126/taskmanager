@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class TaskEntity {
 	
 	@Id
-
 	@Column(name = "task_id")
 	private int taskId;
 	
