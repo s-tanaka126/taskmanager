@@ -10,7 +10,7 @@ import TaskManager.application.Entity.TaskEntity;
 
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity, Integer>{
-	
-	    @Query(value = "select e from TaskEntity e where e.taskId = :taskId")
-        public TaskEntity findByTaskId(@Param("taskId") int taskId);
+
+	@Query(value = "select taskEntity from TaskEntity taskEntity where taskEntity.taskId = :taskId")
+	public TaskEntity findByTaskId(@Param("taskId") int taskId);
 }

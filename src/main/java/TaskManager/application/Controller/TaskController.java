@@ -18,17 +18,17 @@ import TaskManager.application.Service.TaskService;
 @Controller
 @RequestMapping("/task")
 public class TaskController {
-	
+
 	@Autowired
 	TaskService taskService;
 
-	 
+
 	@GetMapping	("/list")
 	public String displayList(TaskRequest taskRequest,Model model) {
-		
+
 		List<TaskEntity> taskList = taskService.getTaskList();
 		model.addAttribute("taskList" , taskList);
-		 
+
 		return "/task/list";
 
 	}
@@ -49,8 +49,8 @@ public class TaskController {
 	public String displayDetail(@RequestParam("taskId") int taskId, TaskRequest teskRequest,Model model) {
 
 		TaskEntity task = taskService.findByTaskId(taskId);
-		model.addAttribute("taskdetail", task);
-		
+		model.addAttribute("taskDetail", task);
+
 		return "/task/detail";
 	}
 
