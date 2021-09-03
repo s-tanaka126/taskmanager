@@ -14,26 +14,23 @@ import TaskManager.application.Repository.TaskRepository;
 @Service
 @Transactional
 public class TaskService {
-	
-	
-	/* @Autowired TaskDao taskDao; */
-	 
-	
+
 	@Autowired
 	TaskRepository taskRepository;
-	
+
 	public void registTask(TaskEntity task) {
-		
+
 		taskRepository.save(task);
 	}
-	
-	
-	  public List<TaskEntity> getTaskList(){
-	  
-	  return taskRepository.findAll(); 
-	  
-	  }
-	 
-	
 
+	public List<TaskEntity> getTaskList(){
+
+		return taskRepository.findAll(); 
+
+	}
+
+	public TaskEntity findByTaskId(int taskId) {
+
+		return taskRepository.findByTaskId(taskId);
+	}
 }
