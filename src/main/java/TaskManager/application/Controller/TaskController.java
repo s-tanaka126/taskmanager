@@ -1,5 +1,7 @@
 package TaskManager.application.Controller;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,22 @@ public class TaskController {
 
 		return "/task/list";
 
+	}
+	
+	@PostMapping("/list")
+	public String updateTask(TaskRequest taskRequest) {
+		
+		TaskEntity task = taskService.findByTaskId(taskRequest.getTaskId());
+		
+		task.setTaskName(taskRequest.getTaskName());
+		task.setTaskDate(Date.valueOf(taskRequest.getTaskDate()));
+		task.setTaskTime(Time.valueOf(taskRequest.getTaskTime()));
+		task.setTaskPlace(taskRequest.getTaskPlace());
+		task.setCompleteFlag(taskRequest.isCompletFlag());
+		
+		taskService.updateTask(task);
+		
+		return "redirect:/task/list";
 	}
 
 
