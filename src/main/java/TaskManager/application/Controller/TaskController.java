@@ -34,20 +34,29 @@ public class TaskController {
 		return "/task/list";
 
 	}
-	
+
 	@PostMapping("/list")
 	public String updateTask(TaskRequest taskRequest) {
-		
+
 		TaskEntity task = taskService.findByTaskId(taskRequest.getTaskId());
-		
+
 		task.setTaskName(taskRequest.getTaskName());
-		task.setTaskDate(Date.valueOf(taskRequest.getTaskDate()));
-		task.setTaskTime(Time.valueOf(taskRequest.getTaskTime()));
+
+		if(taskRequest.getTaskDate() !="") {
+			task.setTaskDate(Date.valueOf(taskRequest.getTaskDate()));
+		}
+		if(taskRequest.getTaskTime() !="") {
+			if(taskRequest.getTaskTime().length() < 8) {
+				taskRequest.setTaskTime(taskRequest.getTaskTime()+":00");
+				task.setTaskTime(Time.valueOf(taskRequest.getTaskTime()));
+			}
+		}
+
 		task.setTaskPlace(taskRequest.getTaskPlace());
 		task.setCompleteFlag(taskRequest.isCompletFlag());
-		
+
 		taskService.updateTask(task);
-		
+
 		return "redirect:/task/list";
 	}
 
@@ -64,10 +73,10 @@ public class TaskController {
 	}
 
 	@GetMapping("/detail")
-	public String displayDetail(@RequestParam("taskId") int taskId, TaskRequest teskRequest,Model model) {
+	public String displayDetail(@RequestParam("taskId") int taskId,TaskRequest taskRequest,Model model) {
 
 		TaskEntity task = taskService.findByTaskId(taskId);
-		model.addAttribute("taskDetail", task);
+		model.addAttribute("task", task);
 
 		return "/task/detail";
 	}
