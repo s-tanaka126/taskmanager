@@ -1,5 +1,7 @@
 package TaskManager.application.Controller;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +26,36 @@ public class TaskController {
 
 
 	@GetMapping	("/list")
-	public String displayList(TaskRequest taskRequest,Model model) {
+	public String displayList(TaskRequest taskRequest, Model model) {
 
 		List<TaskEntity> taskList = taskService.getTaskList();
 		model.addAttribute("taskList" , taskList);
 
 		return "/task/list";
 
+	}
+
+	@PostMapping("/list")
+	public String updateTask(TaskRequest taskRequest) {
+
+		TaskEntity task = taskService.findByTaskId(taskRequest.getTaskId());
+
+		task.setTaskName(taskRequest.getTaskName());
+		if(taskRequest.getTaskDate() !="") {
+			task.setTaskDate(Date.valueOf(taskRequest.getTaskDate()));
+		}
+		if(taskRequest.getTaskTime() !="") {
+			if(taskRequest.getTaskTime().length() < 8) {
+				taskRequest.setTaskTime(taskRequest.getTaskTime()+":00");
+				task.setTaskTime(Time.valueOf(taskRequest.getTaskTime()));
+			}
+		}
+		task.setTaskPlace(taskRequest.getTaskPlace());
+		task.setCompleteFlag(taskRequest.isCompletFlag());
+
+		taskService.updateTask(task);
+
+		return "redirect:/task/list";
 	}
 
 
@@ -46,10 +71,10 @@ public class TaskController {
 	}
 
 	@GetMapping("/detail")
-	public String displayDetail(@RequestParam("taskId") int taskId, TaskRequest teskRequest,Model model) {
+	public String displayDetail(@RequestParam("taskId") int taskId, TaskRequest taskRequest, Model model) {
 
 		TaskEntity task = taskService.findByTaskId(taskId);
-		model.addAttribute("taskDetail", task);
+		model.addAttribute("task", task);
 
 		return "/task/detail";
 	}

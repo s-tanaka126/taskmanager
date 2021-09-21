@@ -33,4 +33,9 @@ public class TaskService {
 
 		return taskRepository.findByTaskId(taskId);
 	}
+	
+	public TaskEntity updateTask(TaskEntity task) {
+		
+		return taskRepository.save(task);
+	}
 }

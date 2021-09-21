@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
- <meta charset="UTF-8">
-  <title>タスク詳細</title>
+<meta charset="UTF-8">
+<title>タスク詳細</title>
 </head>
- <body>
-  <div th:object="${taskDetail}">
-   <form method="post" th:action="@{/task/list}">
-    <table>
-     <tbody>
-      <tr>
-       <th>タスク名</th>
-        <td>
-         <input th:value="*{taskName}" />
-        </td>
-      </tr>
-      <tr>
-       <th>日付</th>
-        <td>
-         <input th:value="*{taskDate}" />
-        </td>
-      </tr>
-      <tr>
-       <th>時間</th>
-        <td>
-         <input th:value="*{taskTime}" />
-        </td>
-      </tr>   
-      <tr>
-       <th>日付</th>
-        <td>
-         <input th:value="*{taskDate}" />
-        </td>
-      </tr>     
-      <tr>
-       <th>場所</th>
-        <td>
-         <input th:value="*{taskPlace}" />
-        </td>
-      </tr> 
-      <tr>
-        <td>
-         <input type="submit" value="更新"/>
-        </td>
-      </tr>         
-     </tbody>
-    </table>
-   </form>
-  </div>
- </body>
+<body>
+	<div th:object="${task}">
+		<form method="post" th:action="@{/task/list}">
+			<table>
+				<tbody>
+					<input type="hidden" name="taskId" th:value="*{taskId}" />
+					<tr>
+						<th>タスク名</th>
+						<td><input name="taskName" th:value="*{taskName}" required />
+						</td>
+					</tr>
+					<tr>
+						<th>日付</th>
+						<td><input name="taskDate" th:value="*{taskDate}" type="date" />
+						</td>
+					</tr>
+					<tr>
+						<th>時間</th>
+						<td><input name="taskTime" th:value="*{taskTime}" type="time" />
+						</td>
+					</tr>
+					<tr>
+						<th>場所</th>
+						<td><input name="taskPlace" th:value="*{taskPlace}" /></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="更新" /></td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" onclick="history.back()">戻る</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
 </html>
