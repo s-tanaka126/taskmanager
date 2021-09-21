@@ -26,18 +26,17 @@
 			<td th:text="*{taskPlace}"></td>
 			<td>
 				<form method="get" th:action="@{/task/detail/}">
-					<input type="hidden" name="taskId" th:value="*{taskId}" /> <input
-						type="submit" value="詳細" 　/>
+					<input type="hidden" name="taskId" th:value="*{taskId}" />
+					<input type="submit" value="詳細" 　/>
 				</form>
 			</td>
 		</tbody>
 	</table>
 
-	<form method="post" th:action="@{/task/regist}"
-		th:object="${taskRequest}">
+	<form method="post" th:action="@{/task/regist}" th:object="${taskRequest}">
 
-		<input name="taskName" type="text" th:value="*{taskName}"
-			placeholder="タスク名" /> <input type="submit" value="登録">
+		<input name="taskName" type="text" th:value="*{taskName}" placeholder="タスク名" />
+		<input type="submit" value="登録">
 
 	</form>
 </body>

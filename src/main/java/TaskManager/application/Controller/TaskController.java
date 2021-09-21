@@ -26,7 +26,7 @@ public class TaskController {
 
 
 	@GetMapping	("/list")
-	public String displayList(TaskRequest taskRequest,Model model) {
+	public String displayList(TaskRequest taskRequest, Model model) {
 
 		List<TaskEntity> taskList = taskService.getTaskList();
 		model.addAttribute("taskList" , taskList);
@@ -41,7 +41,6 @@ public class TaskController {
 		TaskEntity task = taskService.findByTaskId(taskRequest.getTaskId());
 
 		task.setTaskName(taskRequest.getTaskName());
-
 		if(taskRequest.getTaskDate() !="") {
 			task.setTaskDate(Date.valueOf(taskRequest.getTaskDate()));
 		}
@@ -51,7 +50,6 @@ public class TaskController {
 				task.setTaskTime(Time.valueOf(taskRequest.getTaskTime()));
 			}
 		}
-
 		task.setTaskPlace(taskRequest.getTaskPlace());
 		task.setCompleteFlag(taskRequest.isCompletFlag());
 
@@ -73,7 +71,7 @@ public class TaskController {
 	}
 
 	@GetMapping("/detail")
-	public String displayDetail(@RequestParam("taskId") int taskId,TaskRequest taskRequest,Model model) {
+	public String displayDetail(@RequestParam("taskId") int taskId, TaskRequest taskRequest, Model model) {
 
 		TaskEntity task = taskService.findByTaskId(taskId);
 		model.addAttribute("task", task);
