@@ -78,5 +78,13 @@ public class TaskController {
 
 		return "/task/detail";
 	}
+	
+	@PostMapping("/delete")
+	public String deleteTask(TaskRequest taskRequest) {
+		taskService.deleteTask(taskRequest.getTaskId());
+		
+		return "redirect:/task/list";
+		
+	}
 
 }
