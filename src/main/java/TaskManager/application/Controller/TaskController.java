@@ -86,5 +86,15 @@ public class TaskController {
 		return "redirect:/task/list";
 		
 	}
+	
+	@PostMapping("/complete")
+	public String completeTask(TaskRequest taskRequest) {
+		
+		TaskEntity task = taskService.findByTaskId(taskRequest.getTaskId());
+		task.setCompleteFlag(!task.isCompleteFlag());
+		taskService.completeTask(task);
+		
+		return "redirect:/task/list";
+	}
 
 }

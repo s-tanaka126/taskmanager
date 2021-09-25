@@ -20,6 +20,9 @@
 			</th>
 		</thead>
 		<tbody 　th:each="task : ${taskList}" th:object="${task}">
+		    <td>
+		       <input type="checkbox" name="completeFlag" th:checked="*{completeFlag}" disabled/>
+		    </td>
 			<td th:text="*{taskName}"></td>
 			<td th:text="*{taskDate}"></td>
 			<td th:text="*{taskTime}"></td>
@@ -31,9 +34,15 @@
 				</form>
 			</td>
 			<td>
-			    <form method="post" th:action="@{/task/delete}">
+			    <form method="post" th:action="@{/task/delete/}">
 			        <input type="hidden" name="taskId" th:value="*{taskId}" />
 			        <input type="submit" value="削除" /> 
+			    </form>
+			</td>
+			<td>
+			    <form method="post" th:action="@{/task/complete/}">
+			        <input type="hidden" name="taskId" th:value="*{taskId}" />
+			        <input type="submit" value="完了" /> 
 			    </form>
 			</td>
 		</tbody>

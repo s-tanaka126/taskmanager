@@ -24,23 +24,25 @@ public class TaskService {
 	}
 
 	public List<TaskEntity> getTaskList(){
-
 		return taskRepository.findAll(); 
 
 	}
 
 	public TaskEntity findByTaskId(int taskId) {
-
 		return taskRepository.findByTaskId(taskId);
+	
 	}
 	
 	public TaskEntity updateTask(TaskEntity task) {
-		
 		return taskRepository.save(task);
+	
 	}
 	
 	public void deleteTask(int taskId) {
 		taskRepository.deleteById(taskId);
 		
+	}
+	public TaskEntity completeTask(TaskEntity task) {
+		return taskRepository.save(task);
 	}
 }
